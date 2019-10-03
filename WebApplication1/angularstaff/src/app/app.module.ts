@@ -8,8 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
  import { ToastrModule } from 'ngx-toastr';
 
 import { TestformComponent } from './testform/testform.component';
-import { LeftcComponent } from './leftc/leftc.component';
-import { RightcComponent } from './rightc/rightc.component';
 import { LoginComponent } from './login/login.component';
 import {FormsModule } from '@angular/forms';
 import { StudentComponent } from './student/student.component';
@@ -18,19 +16,19 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { StudentreplyComponent } from './studentreply/studentreply.component';
+import { StudentNotificationsComponent } from './student-notifications/student-notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestformComponent,
-    LeftcComponent,
-    RightcComponent,
     LoginComponent,
     StudentComponent,
     TeacherComponent,
     ErrorpageComponent,
     AssignmentsComponent,
-    StudentreplyComponent
+    StudentreplyComponent,
+    StudentNotificationsComponent,
   ],
   imports: [
     BrowserModule,

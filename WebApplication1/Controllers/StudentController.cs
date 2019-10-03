@@ -24,11 +24,24 @@ namespace WebApplication1.Controllers
 
             _dbContext = dbContext;
         }
+        [HttpGet("GetMyNotifications")]
+        public List<StudentNotificationViewModel> GetMyNotifications(string assignmentId, string studentId)
+        {
+            var list = _dbContext.Notifications.Where(s => s.AssignmentId == assignmentId && s.StudentId == studentId).ToList();
+            if (!list.Any()) return new List<StudentNotificationViewModel>();
+            return list.Select(a => new StudentNotificationViewModel
+            {
+                Title = a.Title,
+                IssueDate = a.CreateDate
+            }).ToList();
+        }
+
         [HttpPost("ActionOnAssignment")]
         public bool ActionOnAssignment()
         {
             var hreq = HttpContext.Request;
             var assignmentId = hreq.Form["assignmentId"];
+            var studentId = hreq.Form["studentId"];
 
             var not = _dbContext.Notifications.SingleOrDefault(a => a.Id == assignmentId);
             if (not == null) return false;
@@ -83,6 +96,7 @@ namespace WebApplication1.Controllers
             return list
               .Select(a => new StudentAssignmentViewModel
               {
+                  Id= a.Id,
                   Assignment = a.Title,
                   Teacher = a.Teacher.Title,
                   Course = a.Teacher.Course.Title,

@@ -15,4 +15,11 @@ export class FileuploaderService {
     fd.append('teacherId', teacherId);
     return this.http.post(this.rootpath + '/Teacher/CreateAssignment', fd);
   }
+  replytoassignment(title: string, file: File, studentId) {
+    const fd: FormData = new FormData();
+    fd.append('file', file, file.name);
+    fd.append('title', title);
+    fd.append('studentId', studentId);
+    return this.http.post(this.rootpath + '/Student/ActionOnAssignment', fd);
+  }
 }

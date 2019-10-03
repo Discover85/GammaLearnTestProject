@@ -12,6 +12,7 @@ export class StudentComponent implements OnInit {
 
   readonly rootpath = "http://localhost:51700/api";
   public list = [];
+  public notifications = [];
   private userservice: UserService;
   constructor(private user: UserService, private http: HttpClient, private router: Router) {
     this.userservice = user;
@@ -21,6 +22,15 @@ export class StudentComponent implements OnInit {
     });
   }
 
+  makeReply(assignmentId) {
+
+    this.router.navigate(["/studentNotifications"]);
+
+    this.http.get(this.rootpath + '/student/GetMyNotifications?assignmentId=' + assignmentId + '&&studentId=' + this.userservice.id).subscribe((res: any[]) => {
+      this.notifications = res;
+    });
+
+  }
   ngOnInit() {
     if (this.userservice.userName == "") this.router.navigate(['/login']);
 
