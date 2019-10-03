@@ -1,0 +1,40 @@
+<style>
+  #formElement {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    margin-top: -30px;
+    margin-left: -30px;
+  }
+</style>
+<form class="col-md-6 text-center" id="formElement" #form="ngForm" (submit)="onSubmit(title,file)" autocomplete="off">
+  <!--Title-->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="arrow-alt-circle-right"></i>
+        </div>
+      </div>
+      <input name="title" [(ngModel)]="title"  required minlength="1" maxlength="100" class="form-control" placeholder="Enter assignment title">
+
+    </div>
+  </div>
+  <!--Uploader-->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="arrow-alt-circle-right"></i>
+        </div>
+      </div>
+      <input type="file" #file name="file" (change)="handelFileInput($event.target.files)">
+
+    </div>
+  </div>
+   
+  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="form.invalid">
+    <i class="fas fa-save"></i>
+    Save
+  </button>
+</form>

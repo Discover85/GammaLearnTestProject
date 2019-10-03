@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <h1 class="display-4">Teacher's Dashboard!</h1>
+
+</div><b>Hi,{{userservice.name}}</b><a routerLink="/login">Sign Out</a>
+<hr>
+<button class="btn btn-primary" routerLink="/assignments">Add Assignment</button>
+<div class="row">
+  <div class="input-group col-md-6">
+    <div class="input-group-prepend">
+      <div class="input-group-text bg-white">
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </div>
+    <input name="assignment" (input)="searchbyassignment($event.target.value)" minlength="1" maxlength="10" class="form-control" placeholder="Search by assignment title">
+  </div>
+  <div class="input-group col-md-6">
+    <div class="input-group-prepend">
+      <div class="input-group-text bg-white">
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </div>
+    <input name="createdate"  (input)="searchbycreatedate($event.target.value)"   class="form-control" placeholder="Search by create date">
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped table-sm table-bordered table-hover">
+     
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Assignment</th>
+        <th>Users</th>
+        <th>Accepted</th>
+        <th>Rejected</th>
+        <th>Pending</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list">
+        <td>{{item.course}}</td>
+        <td>{{item.assignment}}</td>
+        <td>{{item.users}}</td>
+        <td>{{item.accepted}}</td>
+        <td>{{item.rejected}}</td>
+        <td>{{item.pending}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

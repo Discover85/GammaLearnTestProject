@@ -1,0 +1,32 @@
+<form class="col-md-6 text-center" #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <!--Title-->
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="arrow-alt-circle-right"></i>
+          </div>
+        </div>
+        <input name="title" [(ngModel)]="title" required minlength="1" maxlength="100" class="form-control" placeholder="Enter assignment title">
+  
+      </div>
+    </div>
+    <!--Uploader-->
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="arrow-alt-circle-right"></i>
+          </div>
+        </div>
+        <input type="file" name="file" [(ngModel)]="file">
+  
+      </div>
+    </div>
+     
+    <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="form.invalid">
+      <i class="fas fa-save"></i>
+      Save
+    </button>
+  </form>
+  

@@ -1,0 +1,40 @@
+<style>
+  #formElement {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    margin-top: -30px;
+    margin-left: -30px;
+     
+  }
+</style>
+<form class="col-md-6" id="formElement" #form="ngForm" (submit)="onSubmit(username,password)" autocomplete="off">
+  <!--login-->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <input name="username" [(ngModel)]="username" required minlength="1" maxlength="10" class="form-control" placeholder="Enter User Name">
+
+    </div>
+  </div>
+  <!--password-->
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <div class="input-group-text bg-white">
+          <i class="fas fa-unlock"></i>
+        </div>
+      </div>
+      <input name="password" type="password" [(ngModel)]="password" required minlength="1" maxlength="10" class="form-control" placeholder="Enter Password">
+
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="form.invalid">
+    <i class="fas fa-key"></i>
+    Login
+  </button>
+</form>
