@@ -22,8 +22,8 @@ export class TeacherComponent {
       this.list = this.allItems;
     });
   }
-  public forecasts: WeatherForecast[];
 
+  //Filter the table by assignment title
   searchbyassignment(title: string) {
     this.list = this.allItems.filter(it => {
       title = title.toLowerCase();
@@ -32,13 +32,20 @@ export class TeacherComponent {
 
     
   }
-
+  //Filter the table by created date
  searchbycreatedate(title: string) {
     this.list = this.allItems.filter(it => {
-      return it.createdate.includes(title);
+      return it.createDate.includes(title);
     }); 
 
     
+  }
+  //Get notifications of current assignment
+  GetMyNotifications(assignmentId) {
+    alert(assignmentId);
+    this.router.navigate(["/teacherNotifications", assignmentId]);
+   
+
   }
 
 
@@ -48,10 +55,4 @@ export class TeacherComponent {
   }
 
 
-}
-interface WeatherForecast {
-  dateFormatted: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
-}
+} 

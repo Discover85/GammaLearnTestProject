@@ -75,16 +75,18 @@ namespace WebApplication1.Controllers
             return list;
         }
         [HttpPost("ActionOnAssignment")]
-        public bool ActionOnAssignment(string notificationId,string title, bool isAccept, string desc)
+        public bool ActionOnAssignment(string notificationId, string title, bool isAccept, string desc)
         {
-           var not= _dbContext.Notifications.SingleOrDefault(a=>a.Id==notificationId);
+            var not = _dbContext.Notifications.SingleOrDefault(a => a.Id == notificationId);
             if (not == null) return false;
-            _dbContext.Notifications.Add(new Notification { AssignmentId=not.AssignmentId,
-            StudentId=not.StudentId,
-            Status=isAccept,
-            Title=title,
-            CreateDate=DateTime.Now,
-            Desc=desc,
+            _dbContext.Notifications.Add(new Notification
+            {
+                AssignmentId = not.AssignmentId,
+                StudentId = not.StudentId,
+                Status = isAccept,
+                Title = title,
+                CreateDate = DateTime.Now,
+                Desc = desc,
             });
             return _dbContext.SaveChanges() > 0;
 
@@ -96,6 +98,8 @@ namespace WebApplication1.Controllers
                 .Where(s => s.TeacherId == teacherId)
                 .Select(a => new ActivitiesViewModel
                 {
+                    Id = a.Id,
+                    CreateDate = a.CreateDate,
                     Assignment = a.Title,
                     Course = a.Teacher.Course.Title,
                     Users = a.Teacher.Course.StudentGroup.Students.Count,

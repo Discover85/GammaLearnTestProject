@@ -8,6 +8,7 @@ import { ErrorpageComponent } from './errorpage/errorpage.component';
 import { AssignmentsComponent } from './assignments/assignments.component';
 import { StudentreplyComponent } from './studentreply/studentreply.component';
 import { StudentNotificationsComponent } from './student-notifications/student-notifications.component';
+import { TeacherNotificationComponent } from './teacher-notification/teacher-notification.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   ,{ path: 'assignments', component: AssignmentsComponent }
   , { path: 'studentreply', component: StudentreplyComponent }
   , { path: 'studentNotifications', component: StudentNotificationsComponent }
-  ,{ path: '**', component: ErrorpageComponent }
+  , { path: 'teacherNotification', component: TeacherNotificationComponent }
+  , { path: '**', component: LoginComponent }
   , { path: '', redirectTo: '/login', pathMatch: 'full' }
  
 ];

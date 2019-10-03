@@ -12,33 +12,35 @@
   <h1 class="display-4 text-center">Please Sign In The Gama Learn </h1>
 
 </div>
-<form class="col-md-6" id="formElement" #form="ngForm" (submit)="onSubmit(username,password)" autocomplete="off">
-  <!--login-->
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text bg-white">
-          <i class="fas fa-user-circle"></i>
+<div class="container">
+  <form class="col-md-6" id="formElement" #form="ngForm" (submit)="onSubmit(username,password)" autocomplete="off">
+    <!--login-->
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-user-circle"></i>
+          </div>
         </div>
-      </div>
-      <input name="username" [(ngModel)]="username" required minlength="1" maxlength="10" class="form-control" placeholder="Enter User Name">
+        <input name="username" [(ngModel)]="username" required minlength="1" maxlength="10" class="form-control" placeholder="Enter User Name">
 
+      </div>
     </div>
-  </div>
-  <!--password-->
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <div class="input-group-text bg-white">
-          <i class="fas fa-unlock"></i>
+    <!--password-->
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <div class="input-group-text bg-white">
+            <i class="fas fa-unlock"></i>
+          </div>
         </div>
-      </div>
-      <input name="password" type="password" [(ngModel)]="password" required minlength="1" maxlength="10" class="form-control" placeholder="Enter Password">
+        <input name="password" type="password" [(ngModel)]="password" required minlength="1" maxlength="10" class="form-control" placeholder="Enter Password">
 
+      </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="form.invalid">
-    <i class="fas fa-key"></i>
-    Login
-  </button>
-</form>
+    <button type="submit" class="btn btn-success btn-lg btn-block" [disabled]="form.invalid">
+      <i class="fas fa-key"></i>
+      Login
+    </button>
+  </form>
+</div>

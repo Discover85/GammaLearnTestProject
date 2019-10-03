@@ -25,11 +25,11 @@ namespace WebApplication1.Controllers
             _dbContext = dbContext;
         }
         [HttpGet("GetMyNotifications")]
-        public List<StudentNotificationViewModel> GetMyNotifications(string assignmentId, string studentId)
+        public List<NotificationViewModel> GetMyNotifications(string assignmentId, string studentId)
         {
             var list = _dbContext.Notifications.Where(s => s.AssignmentId == assignmentId && s.StudentId == studentId).ToList();
-            if (!list.Any()) return new List<StudentNotificationViewModel>();
-            return list.Select(a => new StudentNotificationViewModel
+            if (!list.Any()) return new List<NotificationViewModel>();
+            return list.Select(a => new NotificationViewModel
             {
                 Title = a.Title,
                 IssueDate = a.CreateDate

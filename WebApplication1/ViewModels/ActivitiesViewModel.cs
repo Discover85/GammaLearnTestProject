@@ -7,11 +7,13 @@ namespace WebApplication1.ViewModels
 {
     public class ActivitiesViewModel
     {
+        public string Id{ get; set; }
         public string Course { get; set; }
         public string Assignment { get; set; }
         public int Users{ get; set; }
         public int Accepted{ get; set; }
         public int Rejected{ get; set; }
         public int Pending{ get; set; }
+        public DateTime CreateDate { get;  set; }
     }
 }
