@@ -42,8 +42,7 @@ export class TeacherComponent {
   }
   //Get notifications of current assignment
   GetMyNotifications(assignmentId) {
-    alert(assignmentId);
-    this.router.navigate(["/teacherNotifications", assignmentId]);
+    this.router.navigate(["/teacherNotification", assignmentId]);
    
 
   }

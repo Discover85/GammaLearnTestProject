@@ -49,7 +49,7 @@
           <span class="badge badge-danger">{{item.rejected}}</span>
         </td>
         <td><span class="badge badge-warning">{{item.pending}}</span></td>
-        <td><a class="btn btn-primary" (click)="GetMyNotifications(item.id)">Manage</a></td>
+        <td><a *ngIf="item.pending>0" class="btn btn-primary" (click)="GetMyNotifications(item.id)">Manage</a></td>
       </tr>
     </tbody>
   </table>

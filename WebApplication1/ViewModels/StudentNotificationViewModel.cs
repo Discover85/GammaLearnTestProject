@@ -14,6 +14,7 @@ namespace WebApplication1.ViewModels
         public DateTime IssueDate{ get; set; }
         public bool? Status { get; set; } 
         public string StatusTitle { get; set; } = "Pending";
-        public string Title { get; internal set; }
+        public string Title { get; set; }
+        public string Id { get;  set; }
     }
 }

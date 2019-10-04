@@ -9,6 +9,7 @@ using WebApplication1.ViewModels;
 using Microsoft.AspNetCore.Http;
 using System.Net.Http.Headers;
 using Microsoft.AspNetCore.Hosting.Internal;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplication1.Controllers
 {
@@ -68,12 +69,34 @@ namespace WebApplication1.Controllers
             });
             return _dbContext.SaveChanges() > 0;
         }
-        [HttpPost("GetMyNotifications")]
-        public List<Notification> GetMyNotifications(string assignmentId, string personId)
+        /// <summary>
+        /// Returns replied assignment of the teacher
+        /// </summary>
+        /// <param name="assignmentId">assignment Id</param>
+        /// <param name="personId">teacher Id</param>
+        /// <returns></returns>
+        [HttpGet("GetMyNotifications")]
+        public List<NotificationViewModel> GetMyNotifications(string assignmentId, string personId)
         {
-            var list = _dbContext.Notifications.Where(s => s.AssignmentId == assignmentId).ToList();
-            return list;
+            var list = _dbContext.Notifications.Include(q=>q.Student).Include(a=>a.Assignment).ThenInclude(a=>a.Teacher).ThenInclude(a=>a.Course).Where(s => s.AssignmentId == assignmentId).ToList();
+            return list.Select(a=>new NotificationViewModel { Id=a.StudentId,
+            Assignment=a.Title,
+            Course=a.Assignment.Teacher.Course.Title,
+            IssueDate=a.CreateDate,
+            PersonName=a.Student.Title,
+            Title=a.Title,
+            Status=a.Status,
+            StatusTitle=a.StatusTitle}).ToList();
         }
+
+        /// <summary>
+        /// To make action(Accept/Reject) on specific notofication
+        /// </summary>
+        /// <param name="notificationId"></param>
+        /// <param name="title"></param>
+        /// <param name="isAccept"></param>
+        /// <param name="desc"></param>
+        /// <returns></returns>
         [HttpPost("ActionOnAssignment")]
         public bool ActionOnAssignment(string notificationId, string title, bool isAccept, string desc)
         {
@@ -91,6 +114,11 @@ namespace WebApplication1.Controllers
             return _dbContext.SaveChanges() > 0;
 
         }
+        /// <summary>
+        /// Returns assignments belongs to the teacher
+        /// </summary>
+        /// <param name="teacherId"> teahcer id</param>
+        /// <returns></returns>
         [HttpGet("GetActivities")]
         public List<ActivitiesViewModel> GetActivities(string teacherId)
         {

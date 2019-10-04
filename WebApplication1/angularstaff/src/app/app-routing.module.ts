@@ -19,7 +19,7 @@ const routes: Routes = [
   ,{ path: 'assignments', component: AssignmentsComponent }
   , { path: 'studentreply', component: StudentreplyComponent }
   , { path: 'studentNotifications', component: StudentNotificationsComponent }
-  , { path: 'teacherNotification', component: TeacherNotificationComponent }
+  , { path: 'teacherNotification/:assignmentId', component: TeacherNotificationComponent }
   , { path: '**', component: LoginComponent }
   , { path: '', redirectTo: '/login', pathMatch: 'full' }
  

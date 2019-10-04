@@ -24,6 +24,12 @@ namespace WebApplication1.Controllers
 
             _dbContext = dbContext;
         }
+        /// <summary>
+        /// Returns replied assignment of the student
+        /// </summary>
+        /// <param name="assignmentId"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
         [HttpGet("GetMyNotifications")]
         public List<NotificationViewModel> GetMyNotifications(string assignmentId, string studentId)
         {
